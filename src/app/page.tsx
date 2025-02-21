@@ -35,15 +35,15 @@ import { motion, AnimatePresence } from "framer-motion";
  */
 export default function Home() {
   //---------------------------------------------States----------------------------------------------
-  const [step, setStep] = useState(1);
+  const [section, setSection] = useState(1);
 
   //--------------------------------------------Functions--------------------------------------------
   const nextStep = () => {
-    setStep(step + 1);
+    setSection(section + 1);
   };
 
   const prevStep = () => {
-    setStep(step - 1);
+    setSection(section - 1);
   };
 
   //---------------------------------------------Return----------------------------------------------
@@ -57,9 +57,9 @@ export default function Home() {
   return (
     <div className="w-screen h-screen flex justify-center items-center bg-pastelBabyBlue">
       <AnimatePresence mode="wait">
-        {step === 1 && (
+        {section === 1 && (
           <motion.div
-            key="step1"
+            key="section1"
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -82,9 +82,9 @@ export default function Home() {
           </motion.div>
         )}
 
-        {step === 2 && (
+        {section === 2 && (
           <motion.div
-            key="step2"
+            key="section2"
             initial="hidden"
             animate="visible"
             exit="exit"
