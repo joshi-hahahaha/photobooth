@@ -11,6 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        pastelBabyBlue: "#8ABFE8",
+        pastelBlue: "#869FDE",
+        pastelDarkBlue: "#293380",
+        pastelPink: "#DDBFE4",
+        pastelRed: "#953D60",
+        pastelWhite: "#F0EFF7",
       },
     },
   },
