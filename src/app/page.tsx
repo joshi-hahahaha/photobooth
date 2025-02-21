@@ -15,10 +15,6 @@ export default function Home() {
   const [step, setStep] = useState(1);
 
   //--------------------------------------------Functions--------------------------------------------
-  const handleGetStartedBtn = () => {
-    console.log("Get Started Button Clicked");
-  };
-
   const nextStep = () => {
     setStep(step + 1);
   };
