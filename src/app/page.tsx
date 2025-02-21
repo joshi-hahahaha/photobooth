@@ -8,7 +8,19 @@ import { motion, AnimatePresence } from "framer-motion";
  * Plan:
  * 1. Bring the user to the landing page
  * 2. Landing page will have a button that says Get Started
- * 3.
+ * 3. Move to the photobooth sections
+ * 4. Pick a photo frame shape
+ * 4.a. The number of photos determined by the shape - e.g. if they pick one with 6 then they have 6
+ * 5. Give option of speed photo taking
+ * 5.a. ask for how many pictures they want, e.g. top 6 will be taken only
+ * 5.b. inform them that there will be a 10 second countdown for each
+ * 6. Give other option of being able to take the photos themselves
+ * 6.a. This allows them to choose to retake the photo
+ * 6.b. Sequentially take photos that they are okay until they reach their total
+ * 7. Have the user take a photo
+ * 8. Have the user go through and pick their photos
+ * 9. Let them pick a frame colour for the photos
+ *  10. Review the photo strip and ask if they want to download it
  */
 export default function Home() {
   //---------------------------------------------States----------------------------------------------
