@@ -20,7 +20,18 @@ import { motion, AnimatePresence } from "framer-motion";
  * 7. Have the user take a photo
  * 8. Have the user go through and pick their photos
  * 9. Let them pick a frame colour for the photos
- *  10. Review the photo strip and ask if they want to download it
+ * 10. Review the photo strip and ask if they want to download it
+ */
+
+/**
+ * STEP = SECTION [Subject to change]
+ * 1 = Starting + Information Section
+ * 2 = Frame Selection
+ * 3 = Choose Process Section
+ * 4 = Photo Taking Section
+ * 5 = Photo Review Section
+ * 6 = Frame Colour & Design Section
+ * 7 = Preview & Download Section
  */
 export default function Home() {
   //---------------------------------------------States----------------------------------------------
