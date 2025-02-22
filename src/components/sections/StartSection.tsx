@@ -15,7 +15,7 @@ const StartSection = ({ cardVariants, nextStep }: Props) => {
       exit="exit"
       variants={cardVariants}
       transition={{ duration: 0.5 }}
-      className="w-[40%] min-w-[400px] h-[70%] bg-white rounded-2xl flex flex-col justify-between"
+      className="w-[40%] min-w-96 h-[70%] bg-white rounded-2xl flex flex-col justify-between"
     >
       <div className="w-full h-20 flex justify-center items-center text-4xl text-black">
         {`Welcome to Joshi's Photobooth`}
