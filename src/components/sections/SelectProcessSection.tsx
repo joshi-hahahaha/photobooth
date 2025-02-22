@@ -1,3 +1,4 @@
+import { Process } from "@/types";
 import { motion, Variants } from "motion/react";
 import React from "react";
 
@@ -5,9 +6,15 @@ type Props = {
   cardVariants: Variants;
   nextStep: () => void;
   prevStep: () => void;
+  setProcess: (process: Process) => void;
 };
 
-const SelectProcessSection = ({ cardVariants, nextStep, prevStep }: Props) => {
+const SelectProcessSection = ({
+  cardVariants,
+  nextStep,
+  prevStep,
+  setProcess,
+}: Props) => {
   return (
     <motion.div
       key="section3"
@@ -22,7 +29,9 @@ const SelectProcessSection = ({ cardVariants, nextStep, prevStep }: Props) => {
         {`Choose Your Process`}
       </div>
       <div className="w-full h-full flex justify-evenly flex-wrap">
-        Information
+        Turn into checkboxes
+        <button onClick={() => setProcess("countdown")}>Countdown</button>
+        <button onClick={() => setProcess("as-you-go")}>As You Go</button>
       </div>
       <div className="flex">
         <button

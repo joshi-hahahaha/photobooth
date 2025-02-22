@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, Variants } from "framer-motion";
 import StartSection from "@/components/sections/StartSection";
 import SelectFrameSection from "@/components/sections/SelectFrameSection";
-import { FrameType } from "@/types";
+import { FrameType, Process } from "@/types";
 import SelectProcessSection from "@/components/sections/SelectProcessSection";
 
 /**
@@ -41,11 +41,16 @@ export default function Home() {
   //---------------------------------------------States----------------------------------------------
   const [section, setSection] = useState<number>(1);
   const [frameType, setFrameType] = useState<FrameType | null>(null);
+  const [process, setProcess] = useState<Process | null>(null);
 
   //--------------------------------------------Temporary--------------------------------------------
   useEffect(() => {
     console.log(frameType);
   }, [frameType]);
+
+  useEffect(() => {
+    console.log(process);
+  }, [process]);
 
   //--------------------------------------------Functions--------------------------------------------
   const nextStep = () => {
@@ -83,6 +88,7 @@ export default function Home() {
             cardVariants={cardVariants}
             nextStep={nextStep}
             prevStep={prevStep}
+            setProcess={setProcess}
           />
         )}
       </AnimatePresence>
