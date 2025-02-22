@@ -87,7 +87,7 @@ export default function Home() {
 
   //---------------------------------------------Return----------------------------------------------
   return (
-    <div className="w-screen h-screen flex justify-center items-center bg-pastelBabyBlue">
+    <div className="w-screen h-screen flex justify-center items-center bg-black bg-opacity-50">
       <AnimatePresence mode="wait">
         {section === 1 && (
           <StartSection cardVariants={cardVariants} nextStep={nextStep} />
