@@ -7,6 +7,7 @@ import StartSection from "@/components/sections/StartSection";
 import SelectFrameSection from "@/components/sections/SelectFrameSection";
 import { FrameType, Process } from "@/types";
 import SelectProcessSection from "@/components/sections/SelectProcessSection";
+import TakePhotosSection from "@/components/sections/TakePhotosSection";
 
 /**
  * Plan:
@@ -31,7 +32,7 @@ import SelectProcessSection from "@/components/sections/SelectProcessSection";
  * STEP = SECTION [Subject to change]
  * 1 = Starting + Information Section ✅
  * 2 = Frame Selection ✅
- * 3 = Choose Process Section
+ * 3 = Choose Process Section ✅
  * 4 = Photo Taking Section
  * 5 = Photo Review Section
  * 6 = Frame Colour & Design Section
@@ -43,7 +44,7 @@ export default function Home() {
   const [frameType, setFrameType] = useState<FrameType | null>(null);
   const [process, setProcess] = useState<Process | null>(null);
 
-  //--------------------------------------------Temporary--------------------------------------------
+  //----------------------------------------------Hooks----------------------------------------------
   useEffect(() => {
     console.log(frameType);
   }, [frameType]);
@@ -89,6 +90,13 @@ export default function Home() {
             nextStep={nextStep}
             prevStep={prevStep}
             setProcess={setProcess}
+          />
+        )}
+        {section === 4 && (
+          <TakePhotosSection
+            cardVariants={cardVariants}
+            nextStep={nextStep}
+            prevStep={prevStep}
           />
         )}
       </AnimatePresence>
