@@ -1,8 +1,12 @@
 "use client";
 
 // import HeaderBar from "@/components/HeaderBar";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, Variants } from "framer-motion";
+import StartSection from "@/components/sections/StartSection";
+import SelectFrameSection from "@/components/sections/SelectFrameSection";
+import { FrameType } from "@/types";
+import SelectProcessSection from "@/components/sections/SelectProcessSection";
 
 /**
  * Plan:
@@ -25,8 +29,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 /**
  * STEP = SECTION [Subject to change]
- * 1 = Starting + Information Section
- * 2 = Frame Selection
+ * 1 = Starting + Information Section ✅
+ * 2 = Frame Selection ✅
  * 3 = Choose Process Section
  * 4 = Photo Taking Section
  * 5 = Photo Review Section
@@ -35,7 +39,13 @@ import { motion, AnimatePresence } from "framer-motion";
  */
 export default function Home() {
   //---------------------------------------------States----------------------------------------------
-  const [section, setSection] = useState(1);
+  const [section, setSection] = useState<number>(1);
+  const [frameType, setFrameType] = useState<FrameType | null>(null);
+
+  //--------------------------------------------Temporary--------------------------------------------
+  useEffect(() => {
+    console.log(frameType);
+  }, [frameType]);
 
   //--------------------------------------------Functions--------------------------------------------
   const nextStep = () => {
@@ -47,10 +57,10 @@ export default function Home() {
   };
 
   //---------------------------------------------Return----------------------------------------------
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 }, // Start offscreen (to the right)
-    visible: { opacity: 1, y: 0 }, // Fade in and slide into view
-    exit: { opacity: 0, y: -50 }, // Slide out to the left when exiting
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -50 },
   };
 
   //---------------------------------------------Return----------------------------------------------
@@ -58,61 +68,22 @@ export default function Home() {
     <div className="w-screen h-screen flex justify-center items-center bg-pastelBabyBlue">
       <AnimatePresence mode="wait">
         {section === 1 && (
-          <motion.div
-            key="section1"
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={cardVariants}
-            transition={{ duration: 0.5 }}
-            className="w-[40%] h-[70%] bg-white rounded-2xl flex flex-col justify-between"
-          >
-            <div className="w-full h-20 flex justify-center items-center text-4xl text-black">
-              {`Welcome to Joshi's Photobooth`}
-            </div>
-            <div className="w-full h-20 flex justify-center items-center text-2xl text-black">
-              <div>{`TODO: Information Section`}</div>
-            </div>
-            <button
-              className="w-full h-20 flex justify-center items-center text-2xl text-black bg-pastelPink rounded-b-2xl hover:bg-pastelPink/80 transition"
-              onClick={nextStep}
-            >
-              <div>{`Get Started`}</div>
-            </button>
-          </motion.div>
+          <StartSection cardVariants={cardVariants} nextStep={nextStep} />
         )}
-
         {section === 2 && (
-          <motion.div
-            key="section2"
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={cardVariants}
-            transition={{ duration: 0.5 }}
-            className="w-[40%] h-[70%] bg-white rounded-2xl flex flex-col justify-between"
-          >
-            <div className="w-full h-20 flex justify-center items-center text-4xl text-black">
-              {`Choose Your Options`}
-            </div>
-            <div className="w-full h-full flex justify-center items-center">
-              <div>{`TODO: Options Section`}</div>
-            </div>
-            <div className="flex">
-              <button
-                className="w-1/2 h-20 flex justify-center items-center text-2xl text-black bg-gray-300 rounded-bl-2xl hover:bg-gray-400 transition"
-                onClick={prevStep}
-              >
-                Back
-              </button>
-              <button
-                className="w-1/2 h-20 flex justify-center items-center text-2xl text-black bg-pastelPink rounded-br-2xl hover:bg-pastelPink/80 transition"
-                onClick={nextStep}
-              >
-                Next
-              </button>
-            </div>
-          </motion.div>
+          <SelectFrameSection
+            cardVariants={cardVariants}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            setFrameType={setFrameType}
+          />
+        )}
+        {section === 3 && (
+          <SelectProcessSection
+            cardVariants={cardVariants}
+            nextStep={nextStep}
+            prevStep={prevStep}
+          />
         )}
       </AnimatePresence>
     </div>
