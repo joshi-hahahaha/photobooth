@@ -1,5 +1,6 @@
 import { motion, Variants } from "motion/react";
 import React from "react";
+import PhotoBooth from "../Photobooth";
 
 type Props = {
   cardVariants: Variants;
@@ -22,7 +23,7 @@ const TakePhotosSection = ({ cardVariants, nextStep, prevStep }: Props) => {
         {`Take Your Photos`}
       </div>
       <div className="w-full h-full flex justify-evenly flex-wrap">
-        Take pictures here
+        <PhotoBooth />
       </div>
       <div className="flex">
         <button
