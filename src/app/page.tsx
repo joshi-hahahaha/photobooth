@@ -42,7 +42,11 @@ export default function Home() {
   //---------------------------------------------States----------------------------------------------
   const [section, setSection] = useState<number>(1);
   const [frameType, setFrameType] = useState<FrameType | null>(null);
+  const [usedPhotoAmt, setUsedPhotoAmt] = useState<number>(0);
+  const [totalPhotoAmt, setTotalPhotoAmt] = useState<number>(0);
   const [process, setProcess] = useState<Process | null>(null);
+  const [countdown, setCountdown] = useState<number | null>(null);
+  const [takenPhotos, setTakenPhotos] = useState<string[]>([]);
 
   //----------------------------------------------Hooks----------------------------------------------
   useEffect(() => {
@@ -52,6 +56,18 @@ export default function Home() {
   useEffect(() => {
     console.log(process);
   }, [process]);
+
+  useEffect(() => {
+    console.log(usedPhotoAmt);
+  }, [usedPhotoAmt]);
+
+  useEffect(() => {
+    console.log(totalPhotoAmt);
+  }, [totalPhotoAmt]);
+
+  useEffect(() => {
+    console.log(countdown);
+  }, [countdown]);
 
   //--------------------------------------------Functions--------------------------------------------
   const nextStep = () => {
@@ -82,6 +98,8 @@ export default function Home() {
             nextStep={nextStep}
             prevStep={prevStep}
             setFrameType={setFrameType}
+            setUsedPhotoAmt={setUsedPhotoAmt}
+            setTotalPhotoAmt={setTotalPhotoAmt}
           />
         )}
         {section === 3 && (
@@ -90,6 +108,7 @@ export default function Home() {
             nextStep={nextStep}
             prevStep={prevStep}
             setProcess={setProcess}
+            setCountdown={setCountdown}
           />
         )}
         {section === 4 && (
@@ -97,6 +116,10 @@ export default function Home() {
             cardVariants={cardVariants}
             nextStep={nextStep}
             prevStep={prevStep}
+            takenPhotos={takenPhotos}
+            setTakenPhotos={setTakenPhotos}
+            countdown={countdown}
+            totalPhotoAmt={totalPhotoAmt}
           />
         )}
       </AnimatePresence>

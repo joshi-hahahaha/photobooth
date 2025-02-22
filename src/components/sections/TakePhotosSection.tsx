@@ -1,14 +1,55 @@
 import { motion, Variants } from "motion/react";
-import React from "react";
-import PhotoBooth from "../Photobooth";
+import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Webcam from "react-webcam";
 
 type Props = {
   cardVariants: Variants;
   nextStep: () => void;
   prevStep: () => void;
+  takenPhotos: Array<string>;
+  setTakenPhotos: (takenPhotos: Array<string>) => void;
+  countdown: number | null;
+  totalPhotoAmt: number;
 };
 
-const TakePhotosSection = ({ cardVariants, nextStep, prevStep }: Props) => {
+const TakePhotosSection = ({
+  cardVariants,
+  nextStep,
+  prevStep,
+  takenPhotos,
+  setTakenPhotos,
+  countdown = 3,
+  totalPhotoAmt,
+}: Props) => {
+  const webcamRef = useRef<Webcam>(null);
+  const [image, setImage] = useState<string | null>(null);
+
+  const capturePhoto = () => {
+    const screenshot = webcamRef.current?.getScreenshot();
+    if (screenshot) {
+      setImage(screenshot);
+      const prev = [...takenPhotos];
+      setTakenPhotos([...prev, screenshot]);
+    }
+  };
+
+  useEffect(() => {
+    if (countdown !== null && totalPhotoAmt > 0) {
+      let photoCount = 0;
+      const interval = setInterval(() => {
+        if (photoCount < totalPhotoAmt) {
+          capturePhoto();
+          photoCount++;
+        } else {
+          clearInterval(interval);
+        }
+      }, countdown * 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [countdown, totalPhotoAmt]);
+
   return (
     <motion.div
       key="section3"
@@ -23,7 +64,44 @@ const TakePhotosSection = ({ cardVariants, nextStep, prevStep }: Props) => {
         {`Take Your Photos`}
       </div>
       <div className="w-full h-full flex justify-evenly flex-wrap">
-        <PhotoBooth />
+        <div className="flex flex-col items-center">
+          {!image ? (
+            <>
+              <Webcam
+                audio={false}
+                ref={webcamRef}
+                screenshotFormat="image/png"
+                className="rounded-lg"
+              />
+              <button
+                onClick={capturePhoto}
+                className="mt-4 p-2 bg-blue-500 text-white rounded"
+              >
+                Capture Photo
+              </button>
+            </>
+          ) : (
+            <>
+              <img src={image} alt="Captured" className="rounded-lg" />
+              <button
+                onClick={() => setImage(null)}
+                className="mt-4 p-2 bg-red-500 text-white rounded"
+              >
+                Retake
+              </button>
+            </>
+          )}
+        </div>
+        <div className="w-full h-full flex justify-evenly flex-wrap">
+          {takenPhotos.map((photo, index) => (
+            <img
+              key={index}
+              src={photo}
+              alt={`Taken photo ${index + 1}`}
+              className="w-32 h-32 object-cover"
+            />
+          ))}
+        </div>
       </div>
       <div className="flex">
         <button

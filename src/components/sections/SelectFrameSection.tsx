@@ -1,4 +1,4 @@
-import { FrameType } from "@/types";
+import { FrameType, FrameTypeObject } from "@/types";
 import { motion, Variants } from "motion/react";
 import React from "react";
 
@@ -7,6 +7,8 @@ type Props = {
   nextStep: () => void;
   prevStep: () => void;
   setFrameType: (frameType: FrameType) => void;
+  setUsedPhotoAmt: (usedPhotoAmt: number) => void;
+  setTotalPhotoAmt: (totalPhotoAmt: number) => void;
 };
 
 /**
@@ -22,8 +24,26 @@ const SelectFrameSection = ({
   nextStep,
   prevStep,
   setFrameType,
+  setUsedPhotoAmt,
+  setTotalPhotoAmt,
 }: Props) => {
-  const frameTypes: Array<FrameType> = ["3V", "3H", "6H", "6V", "4S"];
+  const frameTypes: Array<FrameTypeObject> = [
+    { type: "3V", usedPhotoAmt: 3, totalPhotoAmt: 4 },
+    { type: "3H", usedPhotoAmt: 3, totalPhotoAmt: 4 },
+    { type: "6H", usedPhotoAmt: 6, totalPhotoAmt: 7 },
+    { type: "6V", usedPhotoAmt: 6, totalPhotoAmt: 7 },
+    { type: "4S", usedPhotoAmt: 4, totalPhotoAmt: 5 },
+  ];
+
+  const handleclick = (
+    type: FrameType,
+    usedPhotoAmt: number,
+    totalPhotoAmt: number
+  ) => {
+    setFrameType(type);
+    setUsedPhotoAmt(usedPhotoAmt);
+    setTotalPhotoAmt(totalPhotoAmt);
+  };
 
   return (
     <motion.div
@@ -39,13 +59,19 @@ const SelectFrameSection = ({
         {`Choose Your Frame`}
       </div>
       <div className="w-full h-full flex justify-evenly flex-wrap">
-        {frameTypes.map((frameType: FrameType) => (
+        {frameTypes.map((frameTypeObj: FrameTypeObject) => (
           <button
-            key={frameType}
+            key={frameTypeObj.type}
             className="w-[45%] aspect-square bg-pastelBlue my-1 flex justify-center items-center text-2xl text-black rounded-2xl hover:bg-pastelBlue/80 transition"
-            onClick={() => setFrameType(frameType)}
+            onClick={() =>
+              handleclick(
+                frameTypeObj.type,
+                frameTypeObj.usedPhotoAmt,
+                frameTypeObj.totalPhotoAmt
+              )
+            }
           >
-            {frameType}
+            {frameTypeObj.type}
           </button>
         ))}
       </div>

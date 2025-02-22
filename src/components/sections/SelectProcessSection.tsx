@@ -7,6 +7,7 @@ type Props = {
   nextStep: () => void;
   prevStep: () => void;
   setProcess: (process: Process) => void;
+  setCountdown: (countdown: number) => void;
 };
 
 const SelectProcessSection = ({
@@ -14,7 +15,13 @@ const SelectProcessSection = ({
   nextStep,
   prevStep,
   setProcess,
+  setCountdown,
 }: Props) => {
+  const handleClick = (process: Process, countdown: number) => {
+    setProcess(process);
+    setCountdown(countdown);
+  };
+
   return (
     <motion.div
       key="section3"
@@ -30,8 +37,8 @@ const SelectProcessSection = ({
       </div>
       <div className="w-full h-full flex justify-evenly flex-wrap">
         Turn into checkboxes
-        <button onClick={() => setProcess("countdown")}>Countdown</button>
-        <button onClick={() => setProcess("as-you-go")}>As You Go</button>
+        <button onClick={() => handleClick("countdown", 5)}>Countdown</button>
+        <button onClick={() => handleClick("as-you-go", 0)}>As You Go</button>
       </div>
       <div className="flex">
         <button
