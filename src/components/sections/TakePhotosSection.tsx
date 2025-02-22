@@ -1,6 +1,5 @@
 import { motion, Variants } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Webcam from "react-webcam";
 
 type Props = {
