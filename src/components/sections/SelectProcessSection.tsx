@@ -55,7 +55,7 @@ const SelectProcessSection = ({
         <div
           className={`w-full p-4 rounded-lg cursor-pointer text-white transition-all duration-100 ease-in ${
             process === "countdown"
-              ? "bg-pastelBlue border-white border-2"
+              ? "bg-pastelBlue border-white border-4"
               : "bg-pastelRed bg-opacity-50"
           }`}
           onClick={() => handleSelection("countdown", countdown)}
@@ -126,9 +126,9 @@ const SelectProcessSection = ({
           )}
         </div>
         <div
-          className={`w-full p-4 rounded-lg cursor-pointer text-white transition-all duration-300 ${
+          className={`w-full p-4 rounded-lg cursor-pointer text-white transition-all duration-100 ease-in ${
             process === "as-you-go"
-              ? "bg-pastelBlue border-2 border-white"
+              ? "bg-pastelBlue border-4 border-white"
               : "bg-pastelRed bg-opacity-50"
           }`}
           onClick={() => handleSelection("as-you-go", 0)}

@@ -68,8 +68,8 @@ const SelectFrameSection = ({
         {frameTypes.map((frameTypeObj: FrameTypeObject) => (
           <button
             key={frameTypeObj.type}
-            className={`w-[30%] aspect-square bg-pastelBlue my-1 flex justify-center items-center text-2xl text-black rounded-2xl hover:bg-pastelBlue/80 transition ${
-              frameType === frameTypeObj.type ? "border-4 border-black" : ""
+            className={`w-[30%] aspect-square bg-pastelBlue my-1 flex justify-center items-center text-2xl text-black rounded-2xl hover:bg-pastelBlue/80 transition-all duration-100 ease-in ${
+              frameType === frameTypeObj.type ? "border-4 border-white" : ""
             }`}
             onClick={() => {
               handleclick(
