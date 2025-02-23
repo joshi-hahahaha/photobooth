@@ -2,6 +2,7 @@ import { ButtonBarProps, Process } from "@/types";
 import { motion, Variants } from "motion/react";
 import React from "react";
 import ButtonBar from "../ButtonBar";
+import HeaderBar from "../HeaderBar";
 
 type Props = ButtonBarProps & {
   cardVariants: Variants;
@@ -32,11 +33,9 @@ const SelectProcessSection = ({
       exit="exit"
       variants={cardVariants}
       transition={{ duration: 0.5 }}
-      className="w-[40%] min-w-96 bg-white rounded-2xl flex flex-col justify-between"
+      className="w-[40%] min-w-96 bg-pastelWhite bg-opacity-70 rounded-2xl flex flex-col justify-between"
     >
-      <div className="w-full h-20 flex justify-center items-center text-4xl text-black">
-        {`Choose Your Process`}
-      </div>
+      <HeaderBar text={"Choose Your Process"} />
       <div className="w-full h-full flex justify-evenly flex-wrap">
         Turn into checkboxes
         <button onClick={() => handleClick("countdown", 5)}>Countdown</button>

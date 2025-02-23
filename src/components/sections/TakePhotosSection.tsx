@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import ButtonBar from "../ButtonBar";
 import { ButtonBarProps } from "@/types";
+import HeaderBar from "../HeaderBar";
 
 type Props = ButtonBarProps & {
   cardVariants: Variants;
@@ -62,9 +63,7 @@ const TakePhotosSection = ({
       transition={{ duration: 0.5 }}
       className="w-[40%] min-w-96 bg-white rounded-2xl flex flex-col justify-between"
     >
-      <div className="w-full h-20 flex justify-center items-center text-4xl text-black">
-        {`Take Your Photos`}
-      </div>
+      <HeaderBar text={"Joshi's Photobooth"} />
       <div className="w-full h-full flex justify-evenly flex-wrap">
         <div className="flex flex-col items-center">
           {!image ? (

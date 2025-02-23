@@ -3,6 +3,7 @@ import { motion, Variants } from "motion/react";
 import Image from "next/image";
 import React from "react";
 import ButtonBar from "../ButtonBar";
+import HeaderBar from "../HeaderBar";
 
 type Props = ButtonBarProps & {
   cardVariants: Variants;
@@ -17,7 +18,8 @@ type Props = ButtonBarProps & {
  * 2. 3 Horizontal
  * 3. 6 Horizontal
  * 4. 6 Vertical
- * 5. 4 Square
+ * 5. 4 Vertical
+ * 6. 4 Horizontal
  */
 const SelectFrameSection = ({
   cardVariants,
@@ -57,11 +59,9 @@ const SelectFrameSection = ({
       exit="exit"
       variants={cardVariants}
       transition={{ duration: 0.5 }}
-      className="w-[40%] min-w-96 bg-white rounded-2xl flex flex-col justify-between"
+      className="w-[40%] min-w-96 bg-pastelWhite bg-opacity-70 rounded-2xl flex flex-col justify-between"
     >
-      <div className="w-full h-20 flex justify-center items-center text-4xl text-black">
-        {`Choose Your Frame`}
-      </div>
+      <HeaderBar text={"Choose Your Frame"} />
       <div className="w-full flex justify-evenly flex-wrap">
         {frameTypes.map((frameTypeObj: FrameTypeObject) => (
           <button
