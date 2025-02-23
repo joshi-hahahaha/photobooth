@@ -27,7 +27,6 @@ const SelectProcessSection = ({
   setCountdown,
   section,
   setSection,
-  lastSection,
   process,
   countdown,
 }: Props) => {
@@ -146,7 +145,6 @@ const SelectProcessSection = ({
         nextStep={nextStep}
         prevStep={prevStep}
         setSection={setSection}
-        lastSection={lastSection}
       />
     </motion.div>
   );

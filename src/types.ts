@@ -21,5 +21,4 @@ export type ButtonBarProps = {
   nextStep: () => void;
   prevStep: () => void;
   setSection: (section: number) => void;
-  lastSection: number;
 };

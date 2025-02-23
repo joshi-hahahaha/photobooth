@@ -2,7 +2,7 @@ import { motion, Variants } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import ButtonBar from "../ButtonBar";
-import { ButtonBarProps } from "@/types";
+import { ButtonBarProps, FrameType, Process } from "@/types";
 import HeaderBar from "../HeaderBar";
 import Image from "next/image";
 
@@ -12,6 +12,8 @@ type Props = ButtonBarProps & {
   setTakenPhotos: (takenPhotos: Array<string>) => void;
   countdown: number | null;
   totalPhotoAmt: number;
+  frameType: FrameType;
+  process: Process;
 };
 
 const TakePhotosSection = ({
@@ -24,7 +26,8 @@ const TakePhotosSection = ({
   totalPhotoAmt,
   section,
   setSection,
-  lastSection,
+  frameType,
+  process,
 }: Props) => {
   const webcamRef = useRef<Webcam>(null);
   const [image, setImage] = useState<string | null>(null);
@@ -65,6 +68,24 @@ const TakePhotosSection = ({
       className="w-[40%] min-w-96 max-h-[90vh] bg-pastelWhite bg-opacity-70 rounded-2xl flex flex-col justify-between"
     >
       <HeaderBar text={"😁 Smile!"} />
+      <div className="w-full px-8">
+        <div className="w-full bg-pastelWhite rounded-2xl p-4 mb-4">
+          <div className="flex items-center justify-center">
+            {process === "countdown" && (
+              <>
+                <div className="mr-2">{`${countdown}s Countdown,`}</div>
+                <div className="mr-2">{`${totalPhotoAmt} Attempts,`}</div>
+              </>
+            )}
+            <Image
+              src={`/frames/${frameType}.svg`}
+              alt={frameType}
+              width={48}
+              height={48}
+            />
+          </div>
+        </div>
+      </div>
       <div className="w-full h-full flex justify-evenly flex-wrap">
         <div className="flex flex-col items-center">
           {!image ? (
@@ -120,7 +141,6 @@ const TakePhotosSection = ({
           nextStep={nextStep}
           prevStep={prevStep}
           setSection={setSection}
-          lastSection={lastSection}
         />
       </div>
     </motion.div>

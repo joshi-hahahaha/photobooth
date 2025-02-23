@@ -47,7 +47,6 @@ export default function Home() {
   const [process, setProcess] = useState<Process>("countdown");
   const [countdown, setCountdown] = useState<number | null>(1);
   const [takenPhotos, setTakenPhotos] = useState<string[]>([]);
-  const lastSection = 7;
 
   //----------------------------------------------Hooks----------------------------------------------
   useEffect(() => {
@@ -97,7 +96,6 @@ export default function Home() {
             prevStep={prevStep}
             section={section}
             setSection={setSection}
-            lastSection={lastSection}
           />
         )}
         {section === 2 && (
@@ -111,7 +109,6 @@ export default function Home() {
             setTotalPhotoAmt={setTotalPhotoAmt}
             section={section}
             setSection={setSection}
-            lastSection={lastSection}
           />
         )}
         {section === 3 && (
@@ -123,7 +120,6 @@ export default function Home() {
             setCountdown={setCountdown}
             section={section}
             setSection={setSection}
-            lastSection={lastSection}
             process={process}
             countdown={countdown}
           />
@@ -139,7 +135,8 @@ export default function Home() {
             totalPhotoAmt={totalPhotoAmt}
             section={section}
             setSection={setSection}
-            lastSection={lastSection}
+            frameType={frameType}
+            process={process}
           />
         )}
       </AnimatePresence>

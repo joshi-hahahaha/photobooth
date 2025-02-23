@@ -14,7 +14,6 @@ const StartSection = ({
   prevStep,
   section,
   setSection,
-  lastSection,
 }: Props) => {
   return (
     <motion.div
@@ -35,7 +34,6 @@ const StartSection = ({
         nextStep={nextStep}
         prevStep={prevStep}
         setSection={setSection}
-        lastSection={lastSection}
       />
     </motion.div>
   );

@@ -4,22 +4,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { lastSection } from "@/globalConstants";
 
 type Props = {
   section: number;
   nextStep: () => void;
   prevStep: () => void;
   setSection: (section: number) => void;
-  lastSection: number;
 };
 
-const ButtonBar = ({
-  section,
-  nextStep,
-  prevStep,
-  setSection,
-  lastSection,
-}: Props) => {
+const ButtonBar = ({ section, nextStep, prevStep, setSection }: Props) => {
   const handleLastSectionBtn = () => {
     setSection(1);
   };
