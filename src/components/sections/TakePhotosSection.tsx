@@ -5,7 +5,6 @@ import ButtonBar from "../ButtonBar";
 import { ButtonBarProps, FrameType, Process } from "@/types";
 import HeaderBar from "../HeaderBar";
 import Image from "next/image";
-import { Button } from "@mui/material";
 
 type Props = ButtonBarProps & {
   cardVariants: Variants;
