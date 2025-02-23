@@ -1,4 +1,4 @@
-export type FrameType = "3V" | "3H" | "6H" | "6V" | "4S";
+export type FrameType = "3V" | "3H" | "6V" | "6H" | "4V" | "4H";
 
 export type FrameTypeObject = {
   type: FrameType;
