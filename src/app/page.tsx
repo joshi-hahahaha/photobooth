@@ -44,8 +44,8 @@ export default function Home() {
   const [frameType, setFrameType] = useState<FrameType | null>(null);
   const [usedPhotoAmt, setUsedPhotoAmt] = useState<number>(0);
   const [totalPhotoAmt, setTotalPhotoAmt] = useState<number>(0);
-  const [process, setProcess] = useState<Process | null>(null);
-  const [countdown, setCountdown] = useState<number | null>(null);
+  const [process, setProcess] = useState<Process>("countdown");
+  const [countdown, setCountdown] = useState<number>(3);
   const [takenPhotos, setTakenPhotos] = useState<string[]>([]);
   const lastSection = 7;
 
@@ -123,6 +123,8 @@ export default function Home() {
             section={section}
             setSection={setSection}
             lastSection={lastSection}
+            process={process}
+            countdown={countdown}
           />
         )}
         {section === 4 && (
