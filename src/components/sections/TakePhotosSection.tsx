@@ -63,7 +63,7 @@ const TakePhotosSection = ({
       transition={{ duration: 0.5 }}
       className="w-[40%] min-w-96 bg-white rounded-2xl flex flex-col justify-between"
     >
-      <HeaderBar text={"Joshi's Photobooth"} />
+      <HeaderBar text={"😁 Smile!"} />
       <div className="w-full h-full flex justify-evenly flex-wrap">
         <div className="flex flex-col items-center">
           {!image ? (

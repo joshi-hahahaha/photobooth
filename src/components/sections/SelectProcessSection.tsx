@@ -50,13 +50,13 @@ const SelectProcessSection = ({
       transition={{ duration: 0.5 }}
       className="w-[40%] min-w-96 bg-pastelWhite bg-opacity-70 rounded-2xl flex flex-col justify-between"
     >
-      <HeaderBar text={"Choose Your Process"} />
+      <HeaderBar text={"🤔 Choose Your Process"} />
       <div className="w-full h-full flex flex-col space-y-4 px-4">
         <div
-          className={`w-full p-4 rounded-lg cursor-pointer text-white transition-all duration-100 ease-in ${
+          className={`w-full p-4 rounded-lg cursor-pointer text-white hover:bg-opacity-50 transition-all duration-100 ease-in ${
             process === "countdown"
               ? "bg-pastelBlue border-white border-4"
-              : "bg-pastelRed bg-opacity-50"
+              : "bg-pastelPink"
           }`}
           onClick={() => handleSelection("countdown", countdown)}
         >
@@ -126,10 +126,10 @@ const SelectProcessSection = ({
           )}
         </div>
         <div
-          className={`w-full p-4 rounded-lg cursor-pointer text-white transition-all duration-100 ease-in ${
+          className={`w-full p-4 rounded-lg cursor-pointer text-white hover:bg-opacity-50 transition-all duration-100 ease-in ${
             process === "as-you-go"
               ? "bg-pastelBlue border-4 border-white"
-              : "bg-pastelRed bg-opacity-50"
+              : "bg-pastelPink"
           }`}
           onClick={() => handleSelection("as-you-go", 0)}
         >

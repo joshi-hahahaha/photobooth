@@ -63,7 +63,7 @@ const SelectFrameSection = ({
       transition={{ duration: 0.5 }}
       className="w-[40%] min-w-96 bg-pastelWhite bg-opacity-70 rounded-2xl flex flex-col justify-between"
     >
-      <HeaderBar text={"Choose Your Frame"} />
+      <HeaderBar text={"🎞️ Choose Your Frame"} />
       <div className="w-full flex justify-evenly flex-wrap">
         {frameTypes.map((frameTypeObj: FrameTypeObject) => (
           <button
