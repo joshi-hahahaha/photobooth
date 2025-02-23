@@ -15,3 +15,11 @@ export type Options = {
   process: Process;
   countdown?: number;
 };
+
+export type ButtonBarProps = {
+  section: number;
+  nextStep: () => void;
+  prevStep: () => void;
+  setSection: (section: number) => void;
+  lastSection: number;
+};

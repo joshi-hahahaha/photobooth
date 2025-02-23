@@ -2,14 +2,10 @@ import { motion, Variants } from "motion/react";
 import React from "react";
 import HeaderBar from "../HeaderBar";
 import ButtonBar from "../ButtonBar";
+import { ButtonBarProps } from "@/types";
 
-type Props = {
+type Props = ButtonBarProps & {
   cardVariants: Variants;
-  nextStep: () => void;
-  prevStep: () => void;
-  section: number;
-  setSection: (section: number) => void;
-  lastSection: number;
 };
 
 const StartSection = ({

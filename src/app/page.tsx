@@ -108,6 +108,9 @@ export default function Home() {
             setFrameType={setFrameType}
             setUsedPhotoAmt={setUsedPhotoAmt}
             setTotalPhotoAmt={setTotalPhotoAmt}
+            section={section}
+            setSection={setSection}
+            lastSection={lastSection}
           />
         )}
         {section === 3 && (
@@ -117,6 +120,9 @@ export default function Home() {
             prevStep={prevStep}
             setProcess={setProcess}
             setCountdown={setCountdown}
+            section={section}
+            setSection={setSection}
+            lastSection={lastSection}
           />
         )}
         {section === 4 && (
@@ -128,6 +134,9 @@ export default function Home() {
             setTakenPhotos={setTakenPhotos}
             countdown={countdown}
             totalPhotoAmt={totalPhotoAmt}
+            section={section}
+            setSection={setSection}
+            lastSection={lastSection}
           />
         )}
       </AnimatePresence>

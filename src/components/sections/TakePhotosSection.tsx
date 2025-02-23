@@ -1,11 +1,11 @@
 import { motion, Variants } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
+import ButtonBar from "../ButtonBar";
+import { ButtonBarProps } from "@/types";
 
-type Props = {
+type Props = ButtonBarProps & {
   cardVariants: Variants;
-  nextStep: () => void;
-  prevStep: () => void;
   takenPhotos: Array<string>;
   setTakenPhotos: (takenPhotos: Array<string>) => void;
   countdown: number | null;
@@ -18,8 +18,11 @@ const TakePhotosSection = ({
   prevStep,
   takenPhotos,
   setTakenPhotos,
-  countdown = 3,
+  countdown = 3, // TODO: remove
   totalPhotoAmt,
+  section,
+  setSection,
+  lastSection,
 }: Props) => {
   const webcamRef = useRef<Webcam>(null);
   const [image, setImage] = useState<string | null>(null);
@@ -103,18 +106,13 @@ const TakePhotosSection = ({
         </div>
       </div>
       <div className="flex">
-        <button
-          className="w-1/2 h-20 flex justify-center items-center text-2xl text-black bg-gray-300 rounded-bl-2xl hover:bg-gray-400 transition"
-          onClick={prevStep}
-        >
-          Back
-        </button>
-        <button
-          className="w-1/2 h-20 flex justify-center items-center text-2xl text-black bg-pastelPink rounded-br-2xl hover:bg-pastelPink/80 transition"
-          onClick={nextStep}
-        >
-          Next
-        </button>
+        <ButtonBar
+          section={section}
+          nextStep={nextStep}
+          prevStep={prevStep}
+          setSection={setSection}
+          lastSection={lastSection}
+        />
       </div>
     </motion.div>
   );
