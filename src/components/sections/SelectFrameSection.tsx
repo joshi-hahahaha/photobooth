@@ -55,12 +55,12 @@ const SelectFrameSection = ({
       exit="exit"
       variants={cardVariants}
       transition={{ duration: 0.5 }}
-      className="w-[40%] min-w-96 h-[90%] bg-white rounded-2xl flex flex-col justify-between"
+      className="w-[40%] min-w-96 bg-white rounded-2xl flex flex-col justify-between"
     >
       <div className="w-full h-20 flex justify-center items-center text-4xl text-black">
         {`Choose Your Frame`}
       </div>
-      <div className="w-full h-full flex justify-evenly flex-wrap">
+      <div className="w-full flex justify-evenly flex-wrap">
         {frameTypes.map((frameTypeObj: FrameTypeObject) => (
           <button
             key={frameTypeObj.type}
