@@ -15,8 +15,8 @@ type Props = ButtonBarProps & {
   cardVariants: Variants;
   process: Process;
   setProcess: (process: Process) => void;
-  countdown: number;
-  setCountdown: (countdown: number) => void;
+  countdown: number | null;
+  setCountdown: (countdown: number | null) => void;
 };
 
 const SelectProcessSection = ({
@@ -31,9 +31,11 @@ const SelectProcessSection = ({
   process,
   countdown,
 }: Props) => {
-  const handleSelection = (process: Process, countdown: number) => {
+  const handleSelection = (process: Process, countdown: number | null) => {
     setProcess(process);
-    setCountdown(countdown);
+    if (countdown === null) {
+      setCountdown(countdown);
+    }
   };
 
   const sliderText = (value: number) => {
@@ -131,7 +133,7 @@ const SelectProcessSection = ({
               ? "bg-pastelBlue border-4 border-white"
               : "bg-pastelPink"
           }`}
-          onClick={() => handleSelection("as-you-go", 0)}
+          onClick={() => handleSelection("as-you-go", null)}
         >
           <div className="flex items-center space-x-4">
             <FontAwesomeIcon icon={faPersonRunning} className="text-2xl" />

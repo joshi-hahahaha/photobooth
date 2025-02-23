@@ -4,6 +4,7 @@ import Webcam from "react-webcam";
 import ButtonBar from "../ButtonBar";
 import { ButtonBarProps } from "@/types";
 import HeaderBar from "../HeaderBar";
+import Image from "next/image";
 
 type Props = ButtonBarProps & {
   cardVariants: Variants;
@@ -19,7 +20,7 @@ const TakePhotosSection = ({
   prevStep,
   takenPhotos,
   setTakenPhotos,
-  countdown = 3, // TODO: remove
+  countdown,
   totalPhotoAmt,
   section,
   setSection,
@@ -61,7 +62,7 @@ const TakePhotosSection = ({
       exit="exit"
       variants={cardVariants}
       transition={{ duration: 0.5 }}
-      className="w-[40%] min-w-96 bg-white rounded-2xl flex flex-col justify-between"
+      className="w-[40%] min-w-96 max-h-[90vh] bg-pastelWhite bg-opacity-70 rounded-2xl flex flex-col justify-between"
     >
       <HeaderBar text={"😁 Smile!"} />
       <div className="w-full h-full flex justify-evenly flex-wrap">
@@ -73,6 +74,7 @@ const TakePhotosSection = ({
                 ref={webcamRef}
                 screenshotFormat="image/png"
                 className="rounded-lg"
+                style={{ transform: "scaleX(-1)" }}
               />
               <button
                 onClick={capturePhoto}
@@ -83,7 +85,13 @@ const TakePhotosSection = ({
             </>
           ) : (
             <>
-              <img src={image} alt="Captured" className="rounded-lg" />
+              <Image
+                src={image}
+                alt="Captured"
+                className="rounded-lg"
+                width={256}
+                height={256}
+              />
               <button
                 onClick={() => setImage(null)}
                 className="mt-4 p-2 bg-red-500 text-white rounded"
@@ -95,10 +103,12 @@ const TakePhotosSection = ({
         </div>
         <div className="w-full h-full flex justify-evenly flex-wrap">
           {takenPhotos.map((photo, index) => (
-            <img
+            <Image
               key={index}
               src={photo}
               alt={`Taken photo ${index + 1}`}
+              width={128}
+              height={128}
               className="w-32 h-32 object-cover"
             />
           ))}

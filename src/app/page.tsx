@@ -45,7 +45,7 @@ export default function Home() {
   const [usedPhotoAmt, setUsedPhotoAmt] = useState<number>(0);
   const [totalPhotoAmt, setTotalPhotoAmt] = useState<number>(0);
   const [process, setProcess] = useState<Process>("countdown");
-  const [countdown, setCountdown] = useState<number>(1);
+  const [countdown, setCountdown] = useState<number | null>(1);
   const [takenPhotos, setTakenPhotos] = useState<string[]>([]);
   const lastSection = 7;
 
