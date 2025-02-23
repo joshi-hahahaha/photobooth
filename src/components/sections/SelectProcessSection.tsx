@@ -3,6 +3,8 @@ import { motion, Variants } from "motion/react";
 import React from "react";
 import ButtonBar from "../ButtonBar";
 import HeaderBar from "../HeaderBar";
+import Slider from "@mui/material/Slider";
+import { TextField } from "@mui/material";
 
 type Props = ButtonBarProps & {
   cardVariants: Variants;
@@ -29,6 +31,10 @@ const SelectProcessSection = ({
     setCountdown(countdown);
   };
 
+  const sliderText = (value: number) => {
+    return `${value}s`;
+  };
+
   return (
     <motion.div
       key="section3"
@@ -42,40 +48,84 @@ const SelectProcessSection = ({
       <HeaderBar text={"Choose Your Process"} />
       <div className="w-full h-full flex flex-col space-y-4">
         <div
-          className={`w-full p-4 rounded-lg cursor-pointer ${
-            process === "countdown" ? "bg-blue-500 text-white" : "bg-gray-200"
+          className={`w-full p-4 rounded-lg cursor-pointer  ${
+            process === "countdown"
+              ? "bg-pastelPink text-white"
+              : "bg-pastelWhite bg-opacity-50"
           }`}
           onClick={() => handleSelection("countdown", countdown)}
         >
-          Countdown
+          <div className="text-2xl">Countdown</div>
           {process === "countdown" && (
             <div className="mt-2">
-              <input
-                type="range"
-                min="1"
-                max="10"
-                value={countdown}
-                onChange={(e) => setCountdown(Number(e.target.value))}
-                className="w-full"
+              <Slider
+                aria-label="Countdown"
+                getAriaValueText={sliderText}
+                valueLabelDisplay="off"
+                step={1}
+                marks
+                min={1}
+                max={10}
+                value={countdown ?? 1}
+                onChange={(_, value) => setCountdown(value as number)}
+                sx={{
+                  color: "white",
+                  "& .MuiSlider-thumb": {
+                    color: "white",
+                  },
+                  "& .MuiSlider-track": {
+                    color: "white",
+                  },
+                  "& .MuiSlider-rail": {
+                    color: "white",
+                  },
+                }}
               />
-              <input
+              <TextField
                 type="number"
-                min="1"
-                max="10"
                 value={countdown}
                 onChange={(e) => setCountdown(Number(e.target.value))}
-                className="w-full mt-2 p-2 border rounded"
+                className="w-full mt-2"
+                variant="outlined"
+                slotProps={{
+                  input: {
+                    style: {
+                      color: "white",
+                      borderColor: "white",
+                    },
+                  },
+                  inputLabel: {
+                    style: {
+                      color: "white",
+                    },
+                  },
+                }}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "white",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "white",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "white",
+                    },
+                  },
+                }}
               />
             </div>
           )}
         </div>
         <div
           className={`w-full p-4 rounded-lg cursor-pointer ${
-            process === "as-you-go" ? "bg-blue-500 text-white" : "bg-gray-200"
+            process === "as-you-go"
+              ? "bg-pastelPink text-white"
+              : "bg-pastelWhite bg-opacity-50"
           }`}
           onClick={() => handleSelection("as-you-go", 0)}
         >
-          As You Go
+          <div className="text-2xl">As You Go</div>
         </div>
       </div>
       <ButtonBar
