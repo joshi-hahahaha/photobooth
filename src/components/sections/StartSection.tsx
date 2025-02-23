@@ -24,7 +24,7 @@ const StartSection = ({
       exit="exit"
       variants={cardVariants}
       transition={{ duration: 0.5 }}
-      className="w-[40%] min-w-96 h-[70%] bg-pastelWhite bg-opacity-70 rounded-2xl flex flex-col justify-between drop-shadow-lg"
+      className="w-[40%] min-w-96 bg-pastelWhite bg-opacity-70 rounded-2xl flex flex-col justify-between drop-shadow-lg"
     >
       <HeaderBar text="Joshi's Photobooth" showIcon={true} />
       <div className="w-full h-20 flex justify-center items-center text-2xl text-black">

@@ -41,7 +41,7 @@ import TakePhotosSection from "@/components/sections/TakePhotosSection";
 export default function Home() {
   //---------------------------------------------States----------------------------------------------
   const [section, setSection] = useState<number>(1);
-  const [frameType, setFrameType] = useState<FrameType | null>(null);
+  const [frameType, setFrameType] = useState<FrameType>("3V");
   const [usedPhotoAmt, setUsedPhotoAmt] = useState<number>(0);
   const [totalPhotoAmt, setTotalPhotoAmt] = useState<number>(0);
   const [process, setProcess] = useState<Process>("countdown");
@@ -105,6 +105,7 @@ export default function Home() {
             cardVariants={cardVariants}
             nextStep={nextStep}
             prevStep={prevStep}
+            frameType={frameType}
             setFrameType={setFrameType}
             setUsedPhotoAmt={setUsedPhotoAmt}
             setTotalPhotoAmt={setTotalPhotoAmt}

@@ -5,6 +5,11 @@ import ButtonBar from "../ButtonBar";
 import HeaderBar from "../HeaderBar";
 import Slider from "@mui/material/Slider";
 import { TextField } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHourglassEnd,
+  faPersonRunning,
+} from "@fortawesome/free-solid-svg-icons";
 
 type Props = ButtonBarProps & {
   cardVariants: Variants;
@@ -48,14 +53,17 @@ const SelectProcessSection = ({
       <HeaderBar text={"Choose Your Process"} />
       <div className="w-full h-full flex flex-col space-y-4 px-4">
         <div
-          className={`w-full p-4 rounded-lg cursor-pointer text-white ${
+          className={`w-full p-4 rounded-lg cursor-pointer text-white transition-all duration-100 ease-in ${
             process === "countdown"
-              ? "bg-pastelBlue "
+              ? "bg-pastelBlue border-white border-2"
               : "bg-pastelRed bg-opacity-50"
           }`}
           onClick={() => handleSelection("countdown", countdown)}
         >
-          <div className="text-2xl">Countdown</div>
+          <div className="flex items-center space-x-4">
+            <FontAwesomeIcon icon={faHourglassEnd} className="text-2xl" />
+            <div className="text-2xl">Countdown</div>
+          </div>
           {process === "countdown" && (
             <div className="mt-2">
               <Slider
@@ -118,14 +126,17 @@ const SelectProcessSection = ({
           )}
         </div>
         <div
-          className={`w-full p-4 rounded-lg cursor-pointer text-white ${
+          className={`w-full p-4 rounded-lg cursor-pointer text-white transition-all duration-300 ${
             process === "as-you-go"
-              ? "bg-pastelBlue "
+              ? "bg-pastelBlue border-2 border-white"
               : "bg-pastelRed bg-opacity-50"
           }`}
           onClick={() => handleSelection("as-you-go", 0)}
         >
-          <div className="text-2xl">As You Go</div>
+          <div className="flex items-center space-x-4">
+            <FontAwesomeIcon icon={faPersonRunning} className="text-2xl" />
+            <div className="text-2xl">As You Go</div>
+          </div>
         </div>
       </div>
       <ButtonBar

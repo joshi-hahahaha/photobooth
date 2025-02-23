@@ -7,6 +7,7 @@ import HeaderBar from "../HeaderBar";
 
 type Props = ButtonBarProps & {
   cardVariants: Variants;
+  frameType: FrameType;
   setFrameType: (frameType: FrameType) => void;
   setUsedPhotoAmt: (usedPhotoAmt: number) => void;
   setTotalPhotoAmt: (totalPhotoAmt: number) => void;
@@ -25,6 +26,7 @@ const SelectFrameSection = ({
   cardVariants,
   nextStep,
   prevStep,
+  frameType,
   setFrameType,
   setUsedPhotoAmt,
   setTotalPhotoAmt,
@@ -66,14 +68,17 @@ const SelectFrameSection = ({
         {frameTypes.map((frameTypeObj: FrameTypeObject) => (
           <button
             key={frameTypeObj.type}
-            className="w-[30%] aspect-square bg-pastelBlue my-1 flex justify-center items-center text-2xl text-black rounded-2xl hover:bg-pastelBlue/80 transition"
-            onClick={() =>
+            className={`w-[30%] aspect-square bg-pastelBlue my-1 flex justify-center items-center text-2xl text-black rounded-2xl hover:bg-pastelBlue/80 transition ${
+              frameType === frameTypeObj.type ? "border-4 border-black" : ""
+            }`}
+            onClick={() => {
               handleclick(
                 frameTypeObj.type,
                 frameTypeObj.usedPhotoAmt,
                 frameTypeObj.totalPhotoAmt
-              )
-            }
+              );
+              setFrameType(frameTypeObj.type);
+            }}
           >
             <Image
               src={`/frames/${frameTypeObj.type}.svg`}
