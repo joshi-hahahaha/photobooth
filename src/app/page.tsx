@@ -47,6 +47,7 @@ export default function Home() {
   const [process, setProcess] = useState<Process | null>(null);
   const [countdown, setCountdown] = useState<number | null>(null);
   const [takenPhotos, setTakenPhotos] = useState<string[]>([]);
+  const lastSection = 7;
 
   //----------------------------------------------Hooks----------------------------------------------
   useEffect(() => {
@@ -90,7 +91,14 @@ export default function Home() {
     <div className="w-screen h-screen flex justify-center items-center bg-black bg-opacity-50">
       <AnimatePresence mode="wait">
         {section === 1 && (
-          <StartSection cardVariants={cardVariants} nextStep={nextStep} />
+          <StartSection
+            cardVariants={cardVariants}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            section={section}
+            setSection={setSection}
+            lastSection={lastSection}
+          />
         )}
         {section === 2 && (
           <SelectFrameSection

@@ -1,13 +1,25 @@
 import { motion, Variants } from "motion/react";
 import React from "react";
 import HeaderBar from "../HeaderBar";
+import ButtonBar from "../ButtonBar";
 
 type Props = {
   cardVariants: Variants;
   nextStep: () => void;
+  prevStep: () => void;
+  section: number;
+  setSection: (section: number) => void;
+  lastSection: number;
 };
 
-const StartSection = ({ cardVariants, nextStep }: Props) => {
+const StartSection = ({
+  cardVariants,
+  nextStep,
+  prevStep,
+  section,
+  setSection,
+  lastSection,
+}: Props) => {
   return (
     <motion.div
       key="section1"
@@ -22,12 +34,13 @@ const StartSection = ({ cardVariants, nextStep }: Props) => {
       <div className="w-full h-20 flex justify-center items-center text-2xl text-black">
         <div>{`TODO: Information Section`}</div>
       </div>
-      <button
-        className="w-full h-20 flex justify-center items-center text-2xl text-black bg-pastelPink rounded-b-2xl hover:bg-pastelPink/80 transition"
-        onClick={nextStep}
-      >
-        <div>{`Get Started`}</div>
-      </button>
+      <ButtonBar
+        section={section}
+        nextStep={nextStep}
+        prevStep={prevStep}
+        setSection={setSection}
+        lastSection={lastSection}
+      />
     </motion.div>
   );
 };
